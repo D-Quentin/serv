@@ -12,8 +12,35 @@ generator client {
 // to create migrations for them and apply to your dev DB.
 
 model User {
-  id             String @id @default(uuid())
-  username       String @unique
-  hashedPassword String
-  salt           String
+  id              String           @id @default(uuid())
+  username        String           @unique
+  hashedPassword  String
+  salt            String
+  CryptoPositions CryptoPosition[]
+  ApiKey          String?
+  SecretKey       String?
+  TestApiKey      String?
+  TestSecretKey   String?
+}
+
+model CryptoPosition {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  status    String   @default("starting")
+  symbol    String
+  algorithm String
+  amount    Float
+  test      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  logs      Log[]
+}
+
+model Log {
+  id               Int            @id @default(autoincrement())
+  status           Int
+  message          String
+  createdAt        DateTime       @default(now())
+  CryptoPosition   CryptoPosition @relation(fields: [cryptoPositionId], references: [id])
+  cryptoPositionId String
 }

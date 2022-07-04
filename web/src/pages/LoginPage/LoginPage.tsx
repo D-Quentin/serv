@@ -1,16 +1,7 @@
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { useRef } from 'react'
-import {
-  Form,
-  Label,
-  TextField,
-  PasswordField,
-  Submit,
-  FieldError,
-} from '@redwoodjs/forms'
 import { useAuth } from '@redwoodjs/auth'
 import { MetaTags } from '@redwoodjs/web'
-import { toast, Toaster } from '@redwoodjs/web/toast'
 import { useEffect } from 'react'
 import { LoginSingUpWrapper } from './../style/Global.style'
 import { Box, TextInput, PasswordInput, Stack, Center, Button, Badge } from '@mantine/core'
@@ -39,7 +30,7 @@ const LoginPage = () => {
     }
   }
 
-  const handleInputEnter = (event) => {
+  const handleInputEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       onSubmit()
     }

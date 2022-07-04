@@ -4,6 +4,11 @@ export const schema = gql`
     username: String!
     hashedPassword: String!
     salt: String!
+    CryptoPositions: [CryptoPosition]!
+    ApiKey: String
+    SecretKey: String
+    TestApiKey: String
+    TestSecretKey: String
   }
 
   type Query {
@@ -15,12 +20,20 @@ export const schema = gql`
     username: String!
     hashedPassword: String!
     salt: String!
+    ApiKey: String
+    SecretKey: String
+    TestApiKey: String
+    TestSecretKey: String
   }
 
   input UpdateUserInput {
     username: String
     hashedPassword: String
     salt: String
+    ApiKey: String
+    SecretKey: String
+    TestApiKey: String
+    TestSecretKey: String
   }
 
   type Mutation {
