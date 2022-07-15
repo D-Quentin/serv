@@ -12,8 +12,6 @@ export async function createPosition(symbole: string, side: string, quantity: nu
   const signature = HmacSHA256(totalParams, secretKey);
   const finalUrl = `${baseUrl}fapi/v1/order?${totalParams}&signature=${signature}`;
 
-  console.log(finalUrl);
-
   const option = {
     method: "POST",
     headers: {
@@ -33,8 +31,6 @@ export async function closePosition(symbole: string, side: string, price: number
   const signature = HmacSHA256(totalParams, secretKey);
   const finalUrl = `${baseUrl}fapi/v1/order?${totalParams}&signature=${signature}`;
 
-  console.log(finalUrl);
-
   const option = {
     method: "POST",
     headers: {
@@ -49,9 +45,6 @@ export async function closePosition(symbole: string, side: string, price: number
 export async function getPrice(symbole: string, test: boolean, apiKey: string) {
   const baseUrl = test ? API_URL_TEST : API_URL;
   const finalUrl = `${baseUrl}fapi/v1/premiumIndex?symbol=${symbole}`;
-
-  console.log(finalUrl);
-
   const option = {
     method: "GET",
     headers: {
@@ -60,5 +53,5 @@ export async function getPrice(symbole: string, test: boolean, apiKey: string) {
   };
   const res = await (await fetch(finalUrl, option)).json();
 
-  return (res);
+  return (res.markPrice);
 }

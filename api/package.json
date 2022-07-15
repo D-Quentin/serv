@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@redwoodjs/api": "2.0.0",
-    "@redwoodjs/graphql-server": "2.0.0",
-    "cross-undici-fetch": "^0.4.8",
+    "@redwoodjs/api": "2.1.0",
+    "@redwoodjs/graphql-server": "2.1.0",
+    "cross-undici-fetch": "^0.4.11",
     "crypto-js": "^4.1.1"
   }
 }

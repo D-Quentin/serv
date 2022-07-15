@@ -3,16 +3,16 @@ import { MetaTags } from '@redwoodjs/web'
 import { useAuth } from '@redwoodjs/auth'
 import { Button } from '@mantine/core'
 import { showNotification } from '@mantine/notifications'
+import { createCookie, readCookie } from 'src/scripts/Cookie'
 
 const Test = async () => {
-  const { currentUser } = useAuth()
   const option = {
     method: "POST",
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      userId: currentUser.id
+      userId: readCookie('userId'),
     })
   };
   const res = await (await fetch(process.env.FONCTION_URL + "crypto", option)).json();
@@ -24,6 +24,8 @@ const Test = async () => {
 }
 
 const CryptoPage = () => {
+  const { currentUser } = useAuth()
+  createCookie("userId", currentUser.id, 1)
   return (
     <>
       <MetaTags title="Crypto" description="Crypto page" />

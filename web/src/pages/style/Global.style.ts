@@ -1,7 +1,7 @@
-import { MantineTheme } from '@mantine/core'
+import { MantineTheme, CSSObject } from '@mantine/core'
 
 export const LoginSingUpWrapper = (theme: MantineTheme) => {
-  return {
+  const style: CSSObject = {
     display: 'flex',
     padding: theme.spacing.md,
     borderRadius: theme.radius.sm,
@@ -11,4 +11,5 @@ export const LoginSingUpWrapper = (theme: MantineTheme) => {
     flexDirection: 'column',
     backgroundColor: theme.colors.dark[9],
   }
+  return style
 }
