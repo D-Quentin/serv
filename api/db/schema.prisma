@@ -12,15 +12,15 @@ generator client {
 // to create migrations for them and apply to your dev DB.
 
 model User {
-  id              String           @id @default(uuid())
-  username        String           @unique
-  hashedPassword  String
-  salt            String
-  CryptoPositions CryptoPosition[]
-  ApiKey          String?
-  SecretKey       String?
-  TestApiKey      String?
-  TestSecretKey   String?
+  id                   String           @id @default(uuid())
+  username             String           @unique
+  hashedPassword       String
+  salt                 String
+  cryptoPositions      CryptoPosition[]
+  apiKeyBinance        String?
+  secretKeyBinance     String?
+  apiKeyBinanceTest    String?
+  secretKeyBinanceTest String?
 }
 
 model CryptoPosition {

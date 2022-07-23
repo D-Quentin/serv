@@ -1,7 +1,7 @@
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
-import { Tabs } from '@mantine/core';
-import { CurrencyBitcoin, Settings, } from 'tabler-icons-react';
+import { Tabs } from '@mantine/core'
+import { CurrencyBitcoin, Settings, } from 'tabler-icons-react'
 import CryptoSettingsCell from 'src/components/CryptoSettingsCell'
 import GlobalSettingsCell from 'src/components/GlobalSettingsCell'
 import { useAuth } from '@redwoodjs/auth'

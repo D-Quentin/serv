@@ -1,6 +1,6 @@
 import type { APIGatewayEvent, Context } from 'aws-lambda'
-import { logger } from 'src/lib/logger'
-import { createPosition, closePosition, getPrice } from './BinanceApi'
+import * as BinanceFutures from './BinanceFuturesApi'
+import {buy, canBuy} from './AbstractApi'
 import { db } from 'src/lib/db';
 
 export const handler = async (event: APIGatewayEvent, context: Context) => {
@@ -8,9 +8,11 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
   const userData = await db.user.findUnique({
     where: {id: body.userId }
   })
-  // const tmp = await createPosition('BTCUSDT', 'BUY', 20, 18235, true, SECRET_KEY, API_KEY);
-  // const tmp = await closePosition('BTCUSDT', 'SELL', 20000, true, SECRET_KEY, API_KEY);
-  const tmp = await getPrice('BTCUSDT', true, userData.TestApiKey);
+  // const tmp = await BinanceFutures.createPosition('BTCUSDT', 'BUY', 20, 18235, true, SECRET_KEY, API_KEY);
+  // const tmp = await BinanceFutures.closePosition('BTCUSDT', 'SELL', 20000, true, SECRET_KEY, API_KEY);
+  // const tmp = await BinanceFutures.getBalance(userData.TestSecretKey, userData.TestApiKey);
+  const tmp = await canBuy(body.userId, body.api, body.symbol, body.quantity);
+  console.log(tmp);
 
   return {
     statusCode: 200,

@@ -23,13 +23,13 @@ describe('users', () => {
   scenario('creates a user', async () => {
     const result = await createUser({
       input: {
-        username: 'String9232975',
+        username: 'String1964568',
         hashedPassword: 'String',
         salt: 'String',
       },
     })
 
-    expect(result.username).toEqual('String9232975')
+    expect(result.username).toEqual('String1964568')
     expect(result.hashedPassword).toEqual('String')
     expect(result.salt).toEqual('String')
   })
@@ -38,10 +38,10 @@ describe('users', () => {
     const original = await user({ id: scenario.user.one.id })
     const result = await updateUser({
       id: original.id,
-      input: { username: 'String34701222' },
+      input: { username: 'String83089352' },
     })
 
-    expect(result.username).toEqual('String34701222')
+    expect(result.username).toEqual('String83089352')
   })
 
   scenario('deletes a user', async (scenario: StandardScenario) => {

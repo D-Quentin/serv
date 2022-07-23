@@ -10,10 +10,10 @@ import { useAuth } from '@redwoodjs/auth'
 export const QUERY = gql`
   query CryptoSettingsQuery($id: String!) {
     user(id: $id) {
-      ApiKey
-      SecretKey
-      TestApiKey
-      TestSecretKey
+      apiKeyBinance
+      secretKeyBinance
+      apiKeyBinanceTest
+      secretKeyBinanceTest
     }
   }
 `
@@ -50,10 +50,10 @@ export const Success = ({ user }: CellSuccessProps<CryptoSettingsQuery>) => {
 
   const onSubmit = () => {
     update({ variables: {id: currentUser.id,input: {
-      ApiKey: binanceApiKey.current.value,
-      SecretKey: binanceApiSecret.current.value,
-      TestApiKey: binanceApiKeyTest.current.value,
-      TestSecretKey: binanceApiSecretTest.current.value,
+      apiKeyBinance: binanceApiKey.current.value,
+      secretKeyBinance: binanceApiSecret.current.value,
+      apiKeyBinanceTest: binanceApiKeyTest.current.value,
+      secretKeyBinanceTest: binanceApiSecretTest.current.value,
     }}})
   }
 
@@ -62,10 +62,10 @@ export const Success = ({ user }: CellSuccessProps<CryptoSettingsQuery>) => {
       <Text size="xl" weight={500} >Binance API Keys</Text>
       <Divider size="xs" style={{ marginTop: "16px", marginBottom: "16px" }}/>
       <SimpleGrid cols={2}>
-        <TextInput ref={binanceApiKey} icon={<Key size={14} />} label="API Key" placeholder="API Key" defaultValue={user.ApiKey} />
-        <TextInput ref={binanceApiSecret} icon={<Key size={14} />} label="API Secret" placeholder="API Secret" defaultValue={user.SecretKey}/>
-        <TextInput ref={binanceApiKeyTest} icon={<Key size={14} />} label="API Key Test" placeholder="API Key Test" defaultValue={user.TestApiKey}/>
-        <TextInput ref={binanceApiSecretTest} icon={<Key size={14} />} label="API Secret Test" placeholder="API Secret Test" defaultValue={user.TestSecretKey}/>
+        <TextInput ref={binanceApiKey} icon={<Key size={14} />} label="API Key" placeholder="API Key" defaultValue={user.apiKeyBinance} />
+        <TextInput ref={binanceApiSecret} icon={<Key size={14} />} label="API Secret" placeholder="API Secret" defaultValue={user.secretKeyBinance}/>
+        <TextInput ref={binanceApiKeyTest} icon={<Key size={14} />} label="API Key Test" placeholder="API Key Test" defaultValue={user.apiKeyBinanceTest}/>
+        <TextInput ref={binanceApiSecretTest} icon={<Key size={14} />} label="API Secret Test" placeholder="API Secret Test" defaultValue={user.secretKeyBinanceTest}/>
       </SimpleGrid>
       <Space h="xl" />
       <Button disabled={loading} onClick={onSubmit}>Save</Button>
